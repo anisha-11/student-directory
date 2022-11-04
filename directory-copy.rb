@@ -38,9 +38,17 @@ def print_header
 end
 
 def print(students)
-  students.each_with_index do |student, index|
-    puts "#{index + 1} #{student[:name]} (#{student[:cohort]} cohort)"
-  end 
+  puts "Enter letter to find the student"
+  letter = gets.chomp
+  number = 0 
+  students.each do |student|
+    if student[:name].start_with?(letter.downcase, letter.upcase)
+    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+    number += 1
+    else
+    end
+  end
+  puts "There are #{number} students with name beginning with #{letter}"
 end 
 
 def print_footer(students)
