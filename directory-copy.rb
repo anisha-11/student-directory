@@ -37,14 +37,13 @@ def print_header
     puts "-------------"
 end
 
-def print_name_by_character_length(students)
-  students.each do |student|
-    if student[:name].length < 12
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
-    end
+def print(students)
+  number = 0 
+  while number < students.count
+    puts "#{students[number][:name]} (#{students[number][:cohort]})"
+    number += 1
   end
-  puts "There are #{students.count} students with names less than 12 characters "
-end 
+end
 
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
@@ -53,5 +52,5 @@ end
 students = input_students
 #nothing happens until we call the methods
 print_header
-print_name_by_character_length(students)
+print(students)
 print_footer(students)
