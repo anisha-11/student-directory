@@ -37,18 +37,13 @@ def print_header
     puts "-------------"
 end
 
-def print(students)
-  puts "Enter letter to find the student"
-  letter = gets.chomp
-  number = 0 
+def print_name_by_character_length(students)
   students.each do |student|
-    if student[:name].start_with?(letter.downcase, letter.upcase)
+    if student[:name].length < 12
     puts "#{student[:name]} (#{student[:cohort]} cohort)"
-    number += 1
-    else
     end
   end
-  puts "There are #{number} students with name beginning with #{letter}"
+  puts "There are #{students.count} students with names less than 12 characters "
 end 
 
 def print_footer(students)
@@ -58,5 +53,5 @@ end
 students = input_students
 #nothing happens until we call the methods
 print_header
-print(students)
+print_name_by_character_length(students)
 print_footer(students)
