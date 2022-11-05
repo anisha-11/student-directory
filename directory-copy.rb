@@ -34,9 +34,11 @@ def input_students
   while another
     puts "Enter a student name".center(@width)
     name = gets.chomp 
+    puts "Enter a cohort".center(@width)
+    cohort = gets.chomp
     puts "Enter country of birth".center(@width)
     birth_country = gets.chomp 
-    students << { name: name, cohort: :november, birth_country: birth_country }
+    students << { name: name, cohort: cohort, birth_country: birth_country, }
     puts "Now there are #{students.count} students".center(@width)
     another = another_student
   end 
