@@ -12,21 +12,30 @@ students = [
   {name:"Joffrey Baratheon", cohort: :november},
   {name:"Norman Bates", cohort: :november}
 ]
+def another_student
+  puts "Add another student?"
+  another = gets.chomp
+  if another == "yes"
+    return true 
+  elsif another == "no"
+    return false 
+  else
+    puts "This won't work"
+  end
+  another_student
+end 
 
 def input_students
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
-  #create an empty array 
   students = []
-  #get the first name
-  name = gets.chomp
-  #while the name is not empty, repeat this code 
-  while !name.empty? do 
-    #add the student hash to the array 
-    students << {name: name, cohort: :november}
-    puts "Now we have #{students.count} students"
-    #get another name from the user 
+  another = another_student
+  while another
+    puts "Enter a student name"
     name = gets.chomp 
+    puts "Enter country of birth"
+    birth_country = gets.chomp 
+    students << { name: name, cohort: :november, birth_country: birth_country }
+    puts "Now there are #{students.count} students"
+    another = another_student
   end 
   #return array of students 
   students 
@@ -40,14 +49,42 @@ end
 def print(students)
   number = 0 
   while number < students.count
-    puts "#{students[number][:name]} (#{students[number][:cohort]})"
+    puts "#{number + 1}. #{students[number][:name]}, #{students[number][:birth_country]} (#{students[number][:cohort]})"
     number += 1
   end
 end
 
+def print_certain_letter 
+  puts "Enter letter to find the student"
+  letter = gets.chomp
+  number = 0 
+  students.each do |student|
+    if student[:name].start_with?(letter.downcase, letter.upcase)
+    puts "#{student[:name]}, #{students[number][:birth_couunty]} (#{student[:cohort]} cohort)"
+    number += 1
+    else
+    end
+  end
+  puts "There are #{number} students with name beginning with #{letter}"
+end 
+
+def print_name_by_character_length(students)
+  puts "Enter letter to find the student"
+  letter = gets.chomp
+  number = 0 
+  students.each do |student|
+    if student[:name].length < 12 
+      puts "#{student[:name]} (#{student[:cohort]} cohort)"
+      number += 1
+    end 
+  end
+  puts "There are #{students.count} students with names less than 12 characters"
+end 
+
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
+
 
 students = input_students
 #nothing happens until we call the methods
