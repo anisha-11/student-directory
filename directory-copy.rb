@@ -13,6 +13,39 @@ students = [
   {name:"Norman Bates", cohort: :november}
 ]
 
+def interactive_menu
+  students = []
+  loop do
+    puts "1. Input the students"
+    puts "2. show the students"
+    puts "9. Exit"
+   # 2. read the input and save it into a variable 
+   selection = gets.chomp
+   # 3. do what the user has asked
+   case selection 
+      when "1"
+       students = input_students
+      when "2"
+        print_header
+        print(students)
+        print_footer(students)
+      when "9"
+       exit ## this will cause the program to terminate
+      else
+       puts "I don't know what you meant, try again"
+    end
+  end
+end
+  
+
+def plural_students(n)
+  if n == 1 
+    puts "#{n} great student"
+  else 
+    puts "#{n} great students"
+  end 
+end 
+
 @width = (100)
 
 def another_student
@@ -38,8 +71,8 @@ def input_students
     cohort = gets.chomp
     puts "Enter country of birth".center(@width)
     birth_country = gets.chomp 
-    students << { name: name, cohort: cohort, birth_country: birth_country, }
-    puts "Now there are #{students.count} students".center(@width)
+    students << { name: name, cohort: cohort, birth_country: birth_country }
+    puts "Now there are #{plural_students.count} students".center(@width)
     another = another_student
   end 
   #return array of students 
@@ -70,7 +103,7 @@ def print_certain_letter
     else
     end
   end
-  puts "There are #{number} students with name beginning with #{letter}".center(@width)
+  puts "There are #{plural_students.count} students with name beginning with #{letter}".center(@width)
 end 
 
 def print_name_by_character_length(students)
@@ -83,11 +116,11 @@ def print_name_by_character_length(students)
       number += 1
     end 
   end
-  puts "There are #{students.count} students with names less than 12 characters".center(@width)
+  puts "There are #{plural_students.count} students with names less than 12 characters".center(@width)
 end 
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students".center(@width)
+  puts "Overall, we have #{plural_students.count} great students".center(@width)
 end
 
 
@@ -96,3 +129,4 @@ students = input_students
 print_header
 print(students)
 print_footer(students)
+print_interactive_menu
