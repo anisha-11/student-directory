@@ -18,13 +18,13 @@ def input_students
 end
 
 def print_header
-  puts "The students of my cohort at Makers Academy'
+  puts "The students of my cohort at Makers Academy"
   puts "-------------"
 end
 
 def print(students)
   student.each do |student|
-    puts "#{student[:name]} (#{student[:cohort].capitalize} cohort)"
+  puts "#{student[:name]} (#{student[:cohort].capitalize} cohort)"
   end
 end
 
